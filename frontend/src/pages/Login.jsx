@@ -1,9 +1,9 @@
 import React from 'react';
 import AuthForm from '../components/AuthForm';
 
-const Login = () => (
+const Login = ({ setIsLoggedIn, setIsAdmin }) => (
   <div className="flex items-center justify-center min-h-screen">
-    <AuthForm/>
+    <AuthForm setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin}/>
   </div>
 );
 

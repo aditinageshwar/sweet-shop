@@ -18,7 +18,7 @@ const SweetList = () => {
      {sweets.length > 0 ? (
       sweets.map(sweet => <SweetItem key={sweet._id} sweet={sweet} />)
      ):(
-       <p className="text-center text-gray-600 col-span-full">No sweets found</p>
+       <p className="text-center text-gray-600 col-span-full mb-72">No sweets found</p>
      )}
     </div>
     </div>

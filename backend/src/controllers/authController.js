@@ -9,18 +9,19 @@ exports.register = async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'This account already exists.Please try log in to continue.' });
 
-    let role = 'user';
-
+    let role = 'admin';
     const user = new User({
       username,
       email,
       password: password,
       role,
     });
-
     await user.save();
+    
+    const token = jwt.sign({ id: user._id, role: user.role },process.env.JWT_SECRET,{ expiresIn: "7d" });
     res.status(201).json({
       message: "User registered successfully",
+      token,
       user,
     });
   } 

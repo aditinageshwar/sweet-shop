@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { FaEye, FaEyeSlash, FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 
-const AuthForm = () => {
+const AuthForm = ({ setIsLoggedIn, setIsAdmin }) => {
   const navigateTo = useNavigate();
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const [isLogin, setIsLogin] = useState(false); 
@@ -17,21 +17,16 @@ const AuthForm = () => {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
       const res = await api.post(endpoint, form);
     
-      if (isLogin) {
-        localStorage.setItem('token', res.data.token);
-        alert('Login successful');
-      } else {
-        alert('Registration successful');
-      }
+     if(res.data.token) {
+      localStorage.setItem('token', res.data.token);
+      setIsLoggedIn(true);
+      setIsAdmin(res.data.user.role === 'admin');
+     }
 
+      alert(isLogin ? 'Login successful' : 'Registration successful');
       setForm({ username: '', email: '', password: '' });
       setShowPassword(false);
-      if (res.data.user.role === 'admin') {
-        navigateTo('/admin'); 
-      } 
-      else {
-        navigateTo('/'); 
-      }
+      navigateTo('/'); 
     } 
     catch (err) {
       alert(err.response?.data?.error || 'An error occurred');

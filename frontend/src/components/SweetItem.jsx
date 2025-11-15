@@ -1,4 +1,3 @@
-import React from 'react';
 import api from '../api';
 import { FaShoppingCart} from 'react-icons/fa';
 import { BiSolidTagAlt } from "react-icons/bi";

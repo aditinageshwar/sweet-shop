@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../api';
 import { FaEdit, FaTrash, FaPlus, FaBoxOpen } from 'react-icons/fa';
 
