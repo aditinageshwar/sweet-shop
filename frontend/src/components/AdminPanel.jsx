@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api';
-import { FaEdit, FaTrash, FaPlus, FaSearch, FaBoxOpen } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaBoxOpen } from 'react-icons/fa';
 
 const AdminPanel = () => {
   const [sweet, setSweet] = useState({ name: '', category: '', price: '', quantity: '' });
