@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [isAdmin, setIsAdmin] = useState(false);
 
    useEffect(() => {
     const token = localStorage.getItem('token');
@@ -42,6 +44,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />  
           <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={ <Admin />} />
         </Routes>
       </div>
     </BrowserRouter>

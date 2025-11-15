@@ -1,12 +1,15 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.register = async (req, res) => {
   try {
-    const { username, email, password, role = 'user' } = req.body;
+    const { username, email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'This account already exists.Please try log in to continue.' });
+
+    let role = 'user';
 
     const user = new User({
       username,
@@ -32,6 +35,12 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ error: "User not found" });
+    }
+
+    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [];
+    let role = 'user';
+    if (adminEmails.includes(email)) {
+      role = 'admin';
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
