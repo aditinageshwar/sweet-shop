@@ -84,4 +84,5 @@ AI significantly accelerated my development workflow by providing quick, high-qu
 
 <h2>📧 Contact</h2>
 
-**Email** : aditinageshwar7@gmail.com
+*Email* : aditinageshwar7@gmail.com
+*LinkedIn* : https://www.linkedin.com/in/aditinageshwar/
