@@ -9,7 +9,12 @@ exports.register = async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'This account already exists.Please try log in to continue.' });
 
-    let role = 'admin';
+    const adminEmails = process.env.ADMIN_EMAILS?.split(',') || [];
+    let role = 'user';
+    if (adminEmails.includes(email)) {
+      role = 'admin';
+    }
+    
     const user = new User({
       username,
       email,

@@ -1,24 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
 require('dotenv').config();
-
-const userRouter = require('./routes/authRoutes');
-const inventoryRouter = require('./routes/inventoryRoutes');
-
-const app = express();
-app.use(cors({
-    origin: 'http://localhost:5173',                                   // Frontend URL
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-app.use(express.json());
-
-mongoose.connect(process.env.MONGO_URI);
-
-app.use('/api/auth', userRouter);
-app.use('/api/sweets', inventoryRouter);
+const { app, connectDB } = require('./app');
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const startServer = async () => {
+  try {
+    await connectDB();
+    if (process.env.NODE_ENV !== 'test')
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  } catch (err) {
+    console.error('Failed to start server:', err);
+  }
+};
+
+startServer();
