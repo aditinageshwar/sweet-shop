@@ -69,14 +69,15 @@ Node.js (v14 or higher), npm or yarn, MongoDB (local or cloud instance)
 
 **AI Tools Used**
 
-1. Ghatgpt: Primary AI assistant for code generation, and debugging.
+1. Ghatgpt: Primary AI assistant for code generation, and debugging and testing.
 2. Gemini: UI Improvements
 
 **How I Used Them**
 
 1. Code Generation: I primarily used Chatgpt for boilerplate code generation in the React components
 2. UI Enhancements: Gemini helped refine Tailwind CSS classes for better styling, including gradients, shadows, and responsive layouts and suggest icons. 
-3. Problem Solving: When encountering issues like undefined props (e.g., onSearch in SearchBar), I consulted chatgpt for solutions, such as making components self-contained or refactoring into separate files.
+3. Problem Solving: When encountering issues like undefined props (e.g., onSearch in SearchBar), I consulted chatgpt for solutions, such as making components self-contained or refactoring into separate files. 
+4. Testing using AI: I used ChatGPT to help design and implement automated tests for the backend. This ensured that all functionalities worked correctly, and I also manually verified dashboard entries for accuracy.
 
 **Reflection on AI Impact**
 
